@@ -49,6 +49,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.BaseBackend',
+    'api.authentication.TokenOps',
+]
+
 GRAPHENE = {
     'SCHEMA': 'api.schema.schema'
 }

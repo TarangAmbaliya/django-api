@@ -2,7 +2,7 @@ import graphene
 
 from users.types import UserType
 from users.models import UserData
-from users.mutations import CreateUser, ResetPassword
+from users.mutations import CreateUser, ResetPassword, GetOtp
 
 
 class Query(graphene.ObjectType):
@@ -19,6 +19,4 @@ class Query(graphene.ObjectType):
 class Mutation(graphene.ObjectType):
     create_user = CreateUser.Field()
     reset_password = ResetPassword.Field()
-
-
-schema = graphene.Schema(query=Query, mutation=Mutation)
+    get_otp = GetOtp.Field()

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -62,7 +63,6 @@ GRAPHENE = {
 }
 
 GRAPHQL_JWT = {
-    'JWT_PAYLOAD_HANDLER': 'app.utils.jwt_payload',
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
     'JWT_VERIFY_EXPIRATION': True,
     'JWT_ALGORITHM': 'HS256',
@@ -73,7 +73,7 @@ ROOT_URLCONF = 'api.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,3 +140,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email Configurations
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_USE_TLS = True
+EMAIL_PORT = '2525'
+EMAIL_HOST_USER = 'b982e751d200d2'
+EMAIL_HOST_PASSWORD = 'fac0e013df5431'
+
+DEFAULT_FROM_EMAIL = 'django@api.com'
